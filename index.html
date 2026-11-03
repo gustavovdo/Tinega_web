@@ -60,7 +60,7 @@ p{margin:0;text-wrap:pretty}
 .hero-txt{display:flex;flex-direction:column;align-items:center;gap:20px;text-align:center}
 .hero-logo{width:min(220px,58vw);height:auto;transition:transform 350ms var(--ease)}
 .hero-logo:hover{transform:scale(1.06) rotate(-2deg)}
-.pill{font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--y);border:1px solid rgba(255,198,0,.5);border-radius:999px;padding:8px 16px}
+.pill{display:inline-flex;align-items:center;gap:10px;font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--y);border:1px solid rgba(255,198,0,.5);border-radius:999px;padding:8px 16px}
 .h1{font-weight:900;font-size:clamp(56px,15.5vw,104px);line-height:.86}
 .hero .lead{max-width:420px}
 .hero-photo{position:relative;margin:0 -20px;aspect-ratio:1/1}
@@ -88,7 +88,11 @@ p{margin:0;text-wrap:pretty}
 .rep-head{display:flex;flex-direction:column;gap:12px;margin-bottom:28px}
 .cards{display:grid;grid-template-columns:minmax(0,1fr);gap:12px}
 .card{display:flex;flex-direction:column;gap:6px;padding:20px;border-radius:8px;background:rgba(244,240,228,.05);border:1px solid rgba(244,240,228,.16);transition:transform 350ms var(--ease),border-color 350ms var(--ease)}
-.card:hover{transform:scale(1.03);border-color:var(--y)}
+.card{animation:tn-float 6s ease-in-out infinite}
+.card:not(.main){animation:tn-float 6s ease-in-out infinite,tn-glow 9s ease-in-out infinite}
+.card:nth-child(2){animation-delay:-1.5s,0s}
+.card:nth-child(3){animation-delay:-3s,3s}
+.card:nth-child(4){animation-delay:-4.5s,6s}
 .card span{font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--mute)}
 .card h3{font-size:28px;font-weight:800;line-height:.95;color:var(--y)}
 .card p{font-size:15px;line-height:1.5;color:var(--soft)}
@@ -99,8 +103,10 @@ p{margin:0;text-wrap:pretty}
 .ev-grid{display:grid;gap:28px}
 .ev-list{display:flex;flex-direction:column;list-style:none;margin:0;padding:0}
 .ev-list li{display:flex;align-items:center;gap:14px;min-height:56px;padding:14px 12px;margin:0 -12px;border-radius:8px;border-bottom:1px solid var(--line);font-size:18px;font-weight:500;transition:background 300ms var(--ease),color 300ms var(--ease)}
-.ev-list li:hover{background:rgba(255,198,0,.08);color:var(--y)}
-.ev-list li::before{content:'';width:8px;height:8px;border-radius:50%;background:var(--y);flex:none}
+.ev-list li::before{content:'';width:8px;height:8px;border-radius:50%;background:var(--y);flex:none;animation:tn-beat 2.4s ease-out infinite}
+.ev-list li:nth-child(2)::before{animation-delay:.3s}
+.ev-list li:nth-child(3)::before{animation-delay:.6s}
+.ev-list li:nth-child(4)::before{animation-delay:.9s}
 .photos{display:grid;grid-template-columns:1fr 1fr;gap:8px}
 .photos img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:8px}
 .ph-b{order:-1}
@@ -169,6 +175,46 @@ footer{padding:40px 0 calc(104px + env(safe-area-inset-bottom));border-top:1px s
   .mcard{padding:24px}
   .yt{aspect-ratio:auto;height:352px}
 }
+/* ondas sonoras / equalizador */
+.hero{position:relative}
+.eq{display:inline-flex;align-items:flex-end;gap:2px;height:12px;flex:none}
+.eq i{width:3px;height:100%;background:currentColor;border-radius:2px;transform-origin:bottom;animation:tn-eq 1s ease-in-out infinite}
+.eq i:nth-child(2){animation-duration:.8s;animation-delay:-.4s}
+.eq i:nth-child(3){animation-duration:1.2s;animation-delay:-.7s}
+.eq i:nth-child(4){animation-duration:.9s;animation-delay:-.2s}
+.eq-lg{height:.62em;gap:4px;margin-left:.18em;color:var(--y)}
+.eq-lg i{width:.11em}
+.wave{position:absolute;left:0;right:0;height:36px;z-index:1;pointer-events:none;opacity:.55;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='36'%3E%3Cpath d='M0 18 Q15 6 30 18 T60 18 T90 18 T120 18' fill='none' stroke='%23FFC600' stroke-width='2'/%3E%3C/svg%3E"),url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='36'%3E%3Cpath d='M0 18 Q30 32 60 18 T120 18 T180 18 T240 18' fill='none' stroke='%23FFC600' stroke-opacity='.5' stroke-width='1.5'/%3E%3C/svg%3E");background-repeat:repeat-x;background-size:120px 36px,240px 36px;background-position:0 50%,0 50%;animation:tn-wave 4s linear infinite;-webkit-mask-image:linear-gradient(90deg,transparent,#000 20%,#000 80%,transparent);mask-image:linear-gradient(90deg,transparent,#000 20%,#000 80%,transparent)}
+.hero .wave{bottom:4px}
+.final{position:relative;overflow:hidden}
+.final .wave{top:0}
+.final > .wrap{position:relative;z-index:1}
+.bars{position:absolute;left:0;right:0;bottom:0;height:160px;display:flex;align-items:flex-end;gap:4px;padding:0 4px;opacity:.13;pointer-events:none;-webkit-mask-image:linear-gradient(90deg,transparent,#000 15%,#000 85%,transparent);mask-image:linear-gradient(90deg,transparent,#000 15%,#000 85%,transparent)}
+.bars i{flex:1;height:var(--h);background:var(--y);border-radius:3px 3px 0 0;transform-origin:bottom;animation:tn-eq var(--d) ease-in-out infinite;animation-delay:var(--dl)}
+.yt-play{position:relative}
+.yt-play::before,.yt-play::after,.fab::before{content:'';position:absolute;inset:0;border-radius:50%;border:2px solid var(--y);animation:tn-ring 2.4s ease-out infinite;pointer-events:none}
+.yt-play::after{animation-delay:1.2s}
+.fab::before{animation-duration:3s}
+@keyframes tn-eq{0%,100%{transform:scaleY(.3)}50%{transform:scaleY(1)}}
+@keyframes tn-wave{to{background-position:120px 50%,-240px 50%}}
+@keyframes tn-ring{0%{transform:scale(1);opacity:.7}100%{transform:scale(1.8);opacity:0}}
+@keyframes tn-float{0%,100%{translate:0 0}50%{translate:0 -5px}}
+@keyframes tn-glow{0%,30%,100%{border-color:rgba(244,240,228,.16);box-shadow:none}10%{border-color:rgba(255,198,0,.6);box-shadow:0 0 24px rgba(255,198,0,.12)}}
+@keyframes tn-beat{0%{transform:scale(1);box-shadow:0 0 0 0 rgba(255,198,0,.55)}20%{transform:scale(1.35)}60%,100%{transform:scale(1);box-shadow:0 0 0 8px rgba(255,198,0,0)}}
+@keyframes tn-kb{from{transform:scale(1)}to{transform:scale(1.08)}}
+@media (max-width:379px){.pill .eq{display:none}}
+/* hero mobile: foto de fundo com o texto por cima */
+@media (max-width:959px){
+  .hero{padding:32px 0 72px;min-height:100svh;display:flex;flex-direction:column;justify-content:center}
+  .hero-grid{display:block}
+  .hero-photo{position:absolute;inset:0;margin:0;aspect-ratio:auto;z-index:0;overflow:hidden}
+  .hero-photo img{object-position:50% 25%;animation:tn-kb 18s ease-in-out infinite alternate}
+  .hero-photo::after{background:linear-gradient(180deg,rgba(20,21,18,.88) 0%,rgba(20,21,18,.5) 32%,rgba(20,21,18,.55) 58%,rgba(20,21,18,.93) 86%,var(--ink) 100%)}
+  .hero-txt{position:relative;z-index:1}
+  .hero .h1{text-shadow:0 4px 24px rgba(0,0,0,.55)}
+  .hero .lead{color:var(--soft);text-shadow:0 1px 14px rgba(0,0,0,.85)}
+  .pill{background:rgba(20,21,18,.55);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+}
 @keyframes tn-grad{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
 @keyframes tn-shine{0%,70%{transform:translateX(-120%) skewX(-20deg)}100%{transform:translateX(320%) skewX(-20deg)}}
 .rv{transition:opacity 600ms var(--ease),transform 600ms var(--ease)}
@@ -218,7 +264,7 @@ footer{padding:40px 0 calc(104px + env(safe-area-inset-bottom));border-top:1px s
     <div class="wrap hero-grid">
       <div class="hero-txt">
         <picture><source srcset="img/logo.webp" type="image/webp"><img class="hero-logo" src="img/logo.png" alt="Pagode do Tinega" width="560" height="269" fetchpriority="high"></picture>
-        <div class="pill">Samba • Pagode • Uberlândia/MG</div>
+        <div class="pill"><span class="eq" aria-hidden="true"><i></i><i></i><i></i><i></i></span>Samba • Pagode • Uberlândia/MG</div>
         <h1 class="h1">A resenha<br><span class="y">tem nome.</span></h1>
         <p class="lead">O Pagode do Tinega leva pro seu evento samba, pagode e muita troca com a galera. Do clima leve da roda de samba romântica à energia do samba e axé.</p>
         <a class="btn btn-y" href="https://wa.me/5534996366724?text=Oi%2C%20Tinega!%20Quero%20um%20or%C3%A7amento%20para%20o%20meu%20evento." target="_blank" rel="noopener">
@@ -230,6 +276,7 @@ footer{padding:40px 0 calc(104px + env(safe-area-inset-bottom));border-top:1px s
         <picture><source srcset="img/02_voz.webp" type="image/webp"><img src="img/02_voz.jpg" alt="Tinega cantando na roda" width="853" height="853" fetchpriority="high"></picture>
       </div>
     </div>
+    <div class="wave" aria-hidden="true"></div>
   </section>
 
   <section class="sec" aria-labelledby="rep">
@@ -288,7 +335,7 @@ footer{padding:40px 0 calc(104px + env(safe-area-inset-bottom));border-top:1px s
   <section class="sec alt" aria-labelledby="ouca">
     <div class="wrap">
       <div class="stack rv" style="gap:14px">
-        <h2 id="ouca" class="h2">Ouça e <span class="y">assista</span></h2>
+        <h2 id="ouca" class="h2">Ouça e <span class="y">assista</span><span class="eq eq-lg" aria-hidden="true"><i></i><i></i><i></i><i></i></span></h2>
         <p class="lead">Dá o play e sente o clima antes da festa.</p>
       </div>
       <div class="media">
@@ -339,6 +386,8 @@ footer{padding:40px 0 calc(104px + env(safe-area-inset-bottom));border-top:1px s
   </section>
 
   <section class="final alt" aria-labelledby="fim">
+    <div class="wave" aria-hidden="true"></div>
+    <div class="bars" aria-hidden="true"></div>
     <div class="wrap stack">
       <h2 id="fim" class="h2 rv">Bora levar esse show pra <span class="y">sua festa?!?!</span></h2>
       <p class="lead rv">Pagode do bom, galera cantando junto e uma festa pra lembrar.</p>
@@ -372,6 +421,7 @@ footer{padding:40px 0 calc(104px + env(safe-area-inset-bottom));border-top:1px s
 (function(){var fab=document.querySelector('.fab');if(!fab||!('IntersectionObserver' in window))return;var vis=new Set();var o=new IntersectionObserver(function(es){es.forEach(function(e){e.isIntersecting?vis.add(e.target):vis.delete(e.target)});fab.classList.toggle('hide',vis.size>0)});document.querySelectorAll('main .btn-y').forEach(function(b){o.observe(b)});})();
 document.querySelectorAll('.yt-btn').forEach(function(b){b.addEventListener('click',function(){if(!/^https?:$/.test(location.protocol)){window.open('https://www.youtube.com/@Tinegavini','_blank','noopener');return;}var f=document.createElement('iframe');f.src=b.getAttribute('data-yt');f.title='Vídeos do Tinega no YouTube';f.allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; fullscreen';f.allowFullscreen=true;f.referrerPolicy='strict-origin-when-cross-origin';if(/^https?:/.test(location.protocol)){f.src+='&origin='+encodeURIComponent(location.origin);}b.replaceWith(f);});});
 (function(){if(!('IntersectionObserver' in window)||matchMedia('(prefers-reduced-motion: reduce)').matches)return;document.documentElement.classList.add('js');var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.remove('off');io.unobserve(e.target);}})},{threshold:.12,rootMargin:'0px 0px -40px 0px'});document.querySelectorAll('.rv').forEach(function(el){if(el.getBoundingClientRect().top<innerHeight)return;el.classList.add('off');io.observe(el);});})();
+(function(){document.querySelectorAll('.bars').forEach(function(c){var n=innerWidth<640?28:56,h='';for(var i=0;i<n;i++){var x=Math.sin(i/n*Math.PI);h+='<i style="--h:'+Math.round(25+x*55+Math.random()*20)+'%;--d:'+(0.7+Math.random()*0.9).toFixed(2)+'s;--dl:-'+(Math.random()*1.5).toFixed(2)+'s"></i>';}c.innerHTML=h;});})();
 </script>
 </body>
 </html>
