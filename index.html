@@ -262,6 +262,41 @@ html.playing .bars{opacity:.24}
   .h2-long{font-size:clamp(40px,4.6vw,60px)}
   .fab{display:none}
 }
+/* hero: CTAs, faixa de destaques e layout de tela cheia no desktop */
+.hero-ctas{display:flex;flex-direction:column;align-items:center;gap:14px;width:100%}
+.hero-sec{display:inline-flex;align-items:center;gap:10px;min-height:44px;color:var(--cream);font-weight:700;font-size:15px}
+.hero-sec:hover{color:var(--y)}
+.hero-sec-ic{width:32px;height:32px;border-radius:50%;border:1.5px solid rgba(255,198,0,.6);display:flex;align-items:center;justify-content:center;color:var(--y);transition:border-color 300ms var(--ease),background 300ms var(--ease)}
+.hero-sec:hover .hero-sec-ic{background:var(--y);color:var(--ink);border-color:var(--y)}
+.hero-facts{display:none}
+@media (min-width:960px){
+  .hero{min-height:100svh;padding:0;display:flex;flex-direction:column;border-bottom:1px solid var(--line)}
+  .hero-grid{flex:1;display:flex;align-items:center;padding-top:64px;padding-bottom:64px}
+  .hero-txt{position:relative;z-index:1;max-width:600px;gap:24px}
+  .hero-logo{width:260px}
+  .h1{font-size:clamp(84px,7.4vw,128px)}
+  .hero .lead{font-size:19px;max-width:500px;color:var(--soft)}
+  .hero-ctas{flex-direction:row;align-items:center;gap:28px;margin-top:8px}
+  .hero .btn-y{width:auto;max-width:none;padding:14px 26px 14px 20px}
+  .hero-photo{position:absolute;top:0;right:0;bottom:0;width:54vw;margin:0;border-radius:0;z-index:0;overflow:hidden}
+  .hero-photo img{object-position:50% 22%;animation:tn-kb 22s ease-in-out infinite alternate}
+  .hero-photo::after{background:linear-gradient(90deg,var(--ink) 0%,rgba(20,21,18,.75) 18%,rgba(20,21,18,.15) 48%,rgba(20,21,18,0) 70%),linear-gradient(180deg,rgba(20,21,18,.5) 0%,rgba(20,21,18,0) 22%,rgba(20,21,18,0) 70%,var(--ink) 100%)}
+  .hero-facts{display:block;position:relative;z-index:1;border-top:1px solid var(--line);background:rgba(20,21,18,.72);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+  .hero-facts ul{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));list-style:none;margin:0 auto}
+  .hero-facts li{display:flex;flex-direction:column;gap:2px;padding:22px 24px;border-left:1px solid var(--line)}
+  .hero-facts li:first-child{border-left:0;padding-left:0}
+  .hero-facts b{font-family:var(--disp);font-weight:800;font-size:24px;line-height:1;text-transform:uppercase;color:var(--y)}
+  .hero-facts span{font-size:14px;color:var(--mute)}
+}
+@media (min-width:960px) and (max-height:860px){
+  .hero-grid{padding-top:36px;padding-bottom:36px}
+  .hero-txt{gap:16px}
+  .hero-logo{width:190px}
+  .h1{font-size:clamp(68px,6.4vw,96px)}
+  .hero .lead{font-size:17px}
+  .hero-facts li{padding:16px 24px}
+  .hero-facts b{font-size:21px}
+}
 @media (prefers-reduced-motion:reduce){*,*::after{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
 </style>
 </head>
@@ -274,14 +309,25 @@ html.playing .bars{opacity:.24}
         <div class="pill"><span class="eq" aria-hidden="true"><i></i><i></i><i></i><i></i></span>Samba • Pagode • Uberlândia/MG</div>
         <h1 class="h1">A resenha<br><span class="y">tem nome.</span></h1>
         <p class="lead">O Pagode do Tinega leva pro seu evento samba, pagode e muita troca com a galera. Do clima leve da roda de samba romântica à energia do samba e axé.</p>
-        <a class="btn btn-y" href="https://wa.me/5534996366724?text=Oi%2C%20Tinega!%20Quero%20um%20or%C3%A7amento%20para%20o%20meu%20evento." target="_blank" rel="noopener">
-          <img src="img/whatsapp-ink.svg" alt="" width="28" height="28">
-          <span class="t"><strong>Quero o Tinega na minha festa</strong><small>Peça seu orçamento pelo WhatsApp</small></span>
-        </a>
+        <div class="hero-ctas">
+          <a class="btn btn-y" href="https://wa.me/5534996366724?text=Oi%2C%20Tinega!%20Quero%20um%20or%C3%A7amento%20para%20o%20meu%20evento." target="_blank" rel="noopener">
+            <img src="img/whatsapp-ink.svg" alt="" width="28" height="28">
+            <span class="t"><strong>Quero o Tinega na minha festa</strong><small>Peça seu orçamento pelo WhatsApp</small></span>
+          </a>
+          <a class="hero-sec" href="#ouca"><span class="hero-sec-ic" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13l11-6.5z"/></svg></span>Ver e ouvir o show</a>
+        </div>
       </div>
       <div class="hero-photo">
         <picture><source srcset="img/02_voz.webp" type="image/webp"><img src="img/02_voz.jpg" alt="Tinega cantando na roda" width="853" height="853" fetchpriority="high"></picture>
       </div>
+    </div>
+    <div class="hero-facts">
+      <ul class="wrap">
+        <li><b>Desde 2025</b><span>Na estrada</span></li>
+        <li><b>Uberlândia</b><span>e região</span></li>
+        <li><b>Bares, festas</b><span>e empresas</span></li>
+        <li><b>Cartão de crédito</b><span>Condições de pagamento</span></li>
+      </ul>
     </div>
   </section>
 
