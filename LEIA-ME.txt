@@ -1,0 +1,49 @@
+PAGODE DO TINEGA — SITE PRONTO PARA PUBLICAR
+=============================================
+
+CONTEÚDO
+  index.html ........ página principal
+  img/ .............. fotos (WebP + JPG), logo e ícones
+  og-image.jpg ...... capa da prévia no WhatsApp / redes
+  favicon.ico, favicon-32/192.png, apple-touch-icon.png, icon-512.png, site.webmanifest ... ícones
+  404.html .......... página de erro (volta para o início)
+  _headers .......... cache e segurança (Netlify / Cloudflare Pages)
+  robots.txt
+
+ANTES DE PUBLICAR (1 passo obrigatório)
+  Abra index.html num editor de texto e use "Substituir tudo":
+     SEU-DOMINIO.com.br   →   seu domínio real   (ex.: pagodedotinega.com.br  ou  tinega.netlify.app)
+  Sem isso a capa não aparece ao colar o link no WhatsApp.
+
+COMO PUBLICAR — opção mais fácil (Netlify, grátis)
+  1. Acesse https://app.netlify.com/drop  (crie conta grátis se pedir)
+  2. Arraste ESTA PASTA inteira para a página
+  3. Em "Site configuration > Change site name" escolha o nome → vira  https://NOME.netlify.app
+  4. Se ainda não trocou o domínio no index.html, troque por  NOME.netlify.app  e arraste de novo
+     (Deploys > arraste a pasta atualizada)
+  Domínio próprio: Domain management > Add a domain (compre no registro.br, ~R$ 40/ano)
+
+OUTRAS HOSPEDAGENS
+  Vercel, Cloudflare Pages, GitHub Pages, Hostinger/HostGator: envie o CONTEÚDO desta pasta
+  para a raiz do site (index.html direto na raiz, não dentro de subpasta).
+
+DEPOIS DE PUBLICAR — TESTES
+  • Prévia WhatsApp: https://developers.facebook.com/tools/debug/  → cole o link → "Extrair novamente"
+    O WhatsApp guarda cache: para testar de novo cole o link com  ?v=2  no final.
+  • Abra no celular, toque em todos os botões de WhatsApp, no play do YouTube e no Spotify.
+  • Confirmar com o responsável o WhatsApp (34) 99636-6724.
+
+LINKS CONFIGURADOS
+  WhatsApp ... https://wa.me/5534996366724
+  Instagram .. https://www.instagram.com/tinegavini/
+  YouTube .... https://www.youtube.com/@Tinegavini
+  Spotify .... https://open.spotify.com/artist/1edh8CkeLzsK3lZ3djNWQ1
+
+GITHUB PAGES (configurado)
+  Repositório: https://github.com/gustavovdo/Tinega_web
+  Site ......: https://gustavovdo.github.io/Tinega_web/
+  Publica automaticamente a cada push na branch main (Settings > Pages: main / root).
+  • .nojekyll faz o GitHub servir os arquivos como estão.
+  • _headers NÃO é usado pelo GitHub Pages (só Netlify/Cloudflare); pode ficar, é inofensivo.
+  • Domínio próprio: Settings > Pages > Custom domain. Depois troque em index.html
+    "gustavovdo.github.io/Tinega_web" pelo domínio e, em 404.html, "/Tinega_web/" por "/".
