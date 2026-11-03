@@ -189,9 +189,8 @@ footer{padding:40px 0 calc(104px + env(safe-area-inset-bottom));border-top:1px s
 .bars{position:absolute;left:0;right:0;bottom:0;height:160px;display:flex;align-items:flex-end;gap:4px;padding:0 4px;opacity:.13;pointer-events:none;-webkit-mask-image:linear-gradient(90deg,transparent,#000 15%,#000 85%,transparent);mask-image:linear-gradient(90deg,transparent,#000 15%,#000 85%,transparent)}
 .bars i{flex:1;height:var(--h);background:var(--y);border-radius:3px 3px 0 0;transform-origin:bottom;animation:tn-eq var(--d) ease-in-out infinite;animation-delay:var(--dl)}
 .yt-play{position:relative}
-.yt-play::before,.yt-play::after,.fab::before{content:'';position:absolute;inset:0;border-radius:50%;border:2px solid var(--y);animation:tn-ring 2.4s ease-out infinite;pointer-events:none}
+.yt-play::before,.yt-play::after{content:'';position:absolute;inset:0;border-radius:50%;border:2px solid var(--y);animation:tn-ring 2.4s ease-out infinite;pointer-events:none}
 .yt-play::after{animation-delay:1.2s}
-.fab::before{animation-duration:3s}
 @keyframes tn-eq{0%,100%{transform:scaleY(.3)}50%{transform:scaleY(1)}}
 @keyframes tn-eq-soft{0%,100%{transform:scaleY(.35)}50%{transform:scaleY(.6)}}
 /* modo música: calmo parado, intenso tocando */
@@ -430,6 +429,11 @@ document.querySelectorAll('.yt-btn').forEach(function(b){b.addEventListener('cli
 (function(){if(!('IntersectionObserver' in window)||matchMedia('(prefers-reduced-motion: reduce)').matches)return;document.documentElement.classList.add('js');var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.remove('off');io.unobserve(e.target);}})},{threshold:.12,rootMargin:'0px 0px -40px 0px'});document.querySelectorAll('.rv').forEach(function(el){if(el.getBoundingClientRect().top<innerHeight)return;el.classList.add('off');io.observe(el);});})();
 (function(){document.querySelectorAll('.bars').forEach(function(c){var n=innerWidth<640?28:56,h='';for(var i=0;i<n;i++){var x=Math.sin(i/n*Math.PI);h+='<i style="--h:'+Math.round(25+x*55+Math.random()*20)+'%;--d:'+(0.7+Math.random()*0.9).toFixed(2)+'s;--dl:-'+(Math.random()*1.5).toFixed(2)+'s"></i>';}c.innerHTML=h;});})();
 (function(){
+  /* O player do Spotify rola a própria lista até a faixa atual e arrasta a página junto.
+     Ao trocar de faixa, desfaz rolagens que não vieram do usuário. */
+  var guardUntil=0,lastInput=0,lastY=scrollY;
+  ['wheel','touchstart','touchmove','keydown','pointerdown'].forEach(function(t){addEventListener(t,function(){lastInput=Date.now();},{passive:true,capture:true});});
+  addEventListener('scroll',function(){var now=Date.now();if(now<guardUntil&&now-lastInput>800&&Math.abs(scrollY-lastY)>2){window.scrollTo({top:lastY,behavior:'instant'});return;}lastY=scrollY;},{passive:true});
   var URI='spotify:artist:1edh8CkeLzsK3lZ3djNWQ1',ARTIST='https://open.spotify.com/artist/1edh8CkeLzsK3lZ3djNWQ1';
   var host=document.getElementById('sp-embed'),btn=document.querySelector('.mus'),label=btn&&btn.querySelector('.mus-t'),ctrl=null,ready=false;
   function plain(){if(!host||!host.parentNode)return;var f=document.createElement('iframe');f.src='https://open.spotify.com/embed/artist/1edh8CkeLzsK3lZ3djNWQ1?utm_source=generator&theme=0';f.loading='lazy';f.allow='autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture';f.title='Tinega no Spotify';host.replaceWith(f);host=null;}
@@ -439,7 +443,7 @@ document.querySelectorAll('.yt-btn').forEach(function(b){b.addEventListener('cli
     API.createController(host,{uri:URI,width:'100%',height:352},function(c){
       ctrl=c;ready=true;if(btn)btn.removeAttribute('aria-busy');
       var f=document.querySelector('.sp iframe');if(f)f.title='Tinega no Spotify';
-      c.addListener('playback_update',function(e){setState(!!(e&&e.data&&!e.data.isPaused));});
+      c.addListener('playback_update',function(e){var d=e&&e.data;setState(!!(d&&!d.isPaused));if(d&&!d.isPaused&&d.position<2000)guardUntil=Date.now()+3000;});
     });
   };
   var s=document.createElement('script');s.src='https://open.spotify.com/embed/iframe-api/v1';s.async=true;
