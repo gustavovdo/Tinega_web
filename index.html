@@ -81,9 +81,6 @@ p{margin:0;text-wrap:pretty}
 .btn-y small{color:var(--ink);font-weight:500}
 .btn-y img{width:28px;height:28px}
 .btn-y::after{content:'';position:absolute;top:0;bottom:0;left:0;width:35%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.6),transparent);animation:tn-shine 3.6s ease-in-out infinite}
-.btn-g{background:#23493F}
-.btn-g:hover{filter:brightness(1.12)}
-.btn-g small{color:var(--soft)}
 .btn-o{border:1.5px solid #4A4A42}
 .btn-o:hover{border-color:var(--y)}
 .hero .btn-y{width:100%;max-width:460px;min-height:68px}
@@ -106,13 +103,8 @@ p{margin:0;text-wrap:pretty}
 .ev-grid{display:grid;gap:28px}
 .ev-list{display:flex;flex-direction:column;list-style:none;margin:0;padding:0}
 .ev-list li{display:flex;align-items:center;gap:14px;min-height:56px;padding:14px 12px;margin:0 -12px;border-radius:8px;border-bottom:1px solid var(--line);font-size:18px;font-weight:500;transition:background 300ms var(--ease),color 300ms var(--ease)}
-.ev-list li::before{content:'';width:8px;height:8px;border-radius:50%;background:var(--y);flex:none;animation:tn-beat 2.4s ease-out infinite}
-.ev-list li:nth-child(2)::before{animation-delay:.3s}
-.ev-list li:nth-child(3)::before{animation-delay:.6s}
-.ev-list li:nth-child(4)::before{animation-delay:.9s}
 .photos{display:grid;grid-template-columns:1fr 1fr;gap:8px}
 .photos img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:8px}
-.ph-b{order:-1}
 .ph-a img{object-position:62% center}
 @media (max-width:959px){
   .photos{position:relative;display:block;padding-bottom:22%}
@@ -123,22 +115,14 @@ p{margin:0;text-wrap:pretty}
 .quote{font-family:var(--disp);font-size:clamp(28px,7.4vw,44px);font-weight:800;line-height:1;text-transform:uppercase;color:var(--y);text-wrap:balance}
 /* sobre */
 .about-grid{display:grid;gap:28px}
-.about-grid > .stack{gap:20px}
 .about-grid .body{font-size:16px;line-height:1.65;color:var(--soft)}
 .tl{display:flex;flex-direction:column;list-style:none;margin:0;padding:0}
 .tl li{display:grid;grid-template-columns:76px 1fr;gap:12px;align-items:baseline;padding:14px 0;border-top:1px solid var(--line);font-size:16px;font-weight:500}
 .tl li:last-child{border-bottom:1px solid var(--line)}
 .tl b{font-family:var(--disp);font-weight:900;font-size:24px;color:var(--y)}
-/* contato */
-.ct-grid{display:grid;gap:24px}
-.ct-btns{display:grid;grid-template-columns:minmax(0,1fr);gap:12px}
 /* final */
 .final{padding:80px 0 80px;text-align:center}
-.final .stack{align-items:center;gap:16px}
 .final .h2{font-size:clamp(46px,12.4vw,96px);line-height:.88}
-.final .lead{max-width:420px}
-.card-note{font-size:16px;font-weight:700;line-height:1.4;color:var(--y);max-width:420px}
-.final .btn-y{width:100%;max-width:460px;justify-content:center;min-height:68px;margin-top:10px}
 /* footer */
 footer{padding:40px 0 calc(104px + env(safe-area-inset-bottom));border-top:1px solid var(--line)}
 .ft{display:flex;flex-direction:column;align-items:center;gap:12px;text-align:center;font-size:14px;color:var(--mute);line-height:1.6}
@@ -147,7 +131,6 @@ footer{padding:40px 0 calc(104px + env(safe-area-inset-bottom));border-top:1px s
 .soc a{width:52px;height:52px;display:flex;align-items:center;justify-content:center;transition:transform 300ms var(--ease)}
 .soc a:hover{transform:scale(1.12) rotate(-4deg)}
 .soc img{width:46px;height:46px;filter:drop-shadow(0 4px 10px rgba(0,0,0,.45))}
-.ft-credit{font-size:11px;opacity:.45;letter-spacing:.04em;margin-top:4px}
 .ft-links{display:flex;flex-wrap:wrap;justify-content:center;gap:6px}
 /* WhatsApp flutuante (só mobile) */
 .fab{position:fixed;right:12px;bottom:calc(12px + env(safe-area-inset-bottom));z-index:50;width:66px;height:66px;display:flex;align-items:center;justify-content:center;filter:drop-shadow(0 8px 16px rgba(0,0,0,.5));transition:transform 300ms var(--ease)}
@@ -211,21 +194,17 @@ html.playing .bars{opacity:.24}
 .mus-logo{width:auto;height:30px;transform-origin:50% 70%}
 .mus[aria-pressed="true"] .mus-logo{animation:tn-crown 1s ease-in-out infinite}
 @keyframes tn-crown{0%,100%{transform:rotate(-3deg)}50%{transform:rotate(3deg) translateY(-1px)}}
-.mus.hide{opacity:0;transform:scale(.8);pointer-events:none}
 .mus[aria-busy="true"]{opacity:.6;cursor:progress}
 .mus.loading .mus-ic svg{display:none!important}
 .mus.loading .mus-ic::after{content:'';width:14px;height:14px;border-radius:50%;border:2.5px solid var(--ink);border-right-color:transparent;animation:tn-spin .8s linear infinite}
 @keyframes tn-spin{to{transform:rotate(360deg)}}
 .sp{transition:box-shadow 400ms var(--ease)}
 .sp.nudge{box-shadow:0 0 0 3px var(--y),0 0 32px rgba(255,198,0,.35)}
-@media (min-width:960px){.mus{left:24px;bottom:108px}}
-@media (min-width:960px) and (max-height:860px){.mus{bottom:92px}}
 @media (max-width:959px){.mus{height:44px;left:12px;bottom:calc(16px + env(safe-area-inset-bottom))}.mus-ic{width:30px;height:30px}.mus-logo{height:26px}.hero{padding-bottom:104px}}
 @media (max-width:959px) and (max-height:720px){.hero{padding-top:20px;padding-bottom:88px}.hero-txt{gap:14px}.hero-logo{width:min(150px,42vw)}.pill{padding:6px 14px;font-size:11px}.h1{font-size:clamp(46px,13vw,72px)}.hero .lead{font-size:15px;line-height:1.45}.hero .btn-y{min-height:60px}}
 @keyframes tn-ring{0%{transform:scale(1);opacity:.7}100%{transform:scale(1.8);opacity:0}}
 @keyframes tn-float{0%,100%{translate:0 0}50%{translate:0 -5px}}
 @keyframes tn-glow{0%,30%,100%{border-color:rgba(244,240,228,.16);box-shadow:none}10%{border-color:rgba(255,198,0,.6);box-shadow:0 0 24px rgba(255,198,0,.12)}}
-@keyframes tn-beat{0%{transform:scale(1);box-shadow:0 0 0 0 rgba(255,198,0,.55)}20%{transform:scale(1.35)}60%,100%{transform:scale(1);box-shadow:0 0 0 8px rgba(255,198,0,0)}}
 @keyframes tn-kb{from{transform:scale(1)}to{transform:scale(1.08)}}
 @media (max-width:379px){.pill .eq{display:none}}
 /* hero mobile: foto de fundo com o texto por cima */
@@ -246,8 +225,6 @@ html.playing .bars{opacity:.24}
 /* tablet */
 @media (min-width:640px){
   .cards{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .ct-btns{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .ct-btns .btn:first-child{grid-column:1/-1}
 }
 /* desktop */
 @media (min-width:960px){
@@ -262,18 +239,14 @@ html.playing .bars{opacity:.24}
   .hero-photo{margin:0;border-radius:12px;overflow:hidden}
   .hero-photo::after{background:linear-gradient(90deg,var(--ink) 0%,rgba(20,21,18,0) 22%)}
   .lead{font-size:18px}
-  .rep-head{flex-direction:row;align-items:flex-end;justify-content:space-between;gap:48px;margin-bottom:48px}
-  .rep-head .h2{max-width:820px}
-  .rep-head .lead{flex:none;font-family:var(--disp);font-size:32px;font-weight:800;text-transform:uppercase;color:var(--y)}
   .cards{grid-template-columns:repeat(4,minmax(0,1fr))}
   .card{padding:28px}
   .ev-grid{grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:64px;align-items:center}
-  .ev-grid .quote{grid-column:1/-1;text-align:center;margin-top:16px}
+  .ev-grid .quote{grid-column:1/-1}
   .about-grid{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:64px;align-items:start}
   .about-grid .body{font-size:18px}
   .tl li{grid-template-columns:110px 1fr;font-size:18px;padding:20px 0}
   .tl b{font-size:30px}
-  .ct-grid{grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:64px;align-items:start}
   .final{padding:140px 0 128px}
   footer{padding-bottom:48px}
   .h2-long{font-size:clamp(40px,4.6vw,60px)}
@@ -313,6 +286,181 @@ html.playing .bars{opacity:.24}
   .hero-facts li{padding:16px 24px}
   .hero-facts b{font-size:21px}
 }
+/* ===== acabamento: sistema de botões, cards e ritmo ===== */
+:root{--r:12px}
+.kicker{font-family:var(--disp);font-weight:800;font-size:18px;letter-spacing:.04em;text-transform:uppercase;color:var(--y);margin:0 0 10px}
+.chev{width:20px;height:20px;flex:none;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+/* botões: primário (amarelo), secundário (contorno) */
+.btn{border-radius:var(--r);gap:14px}
+.btn img,.btn svg{width:28px;height:28px}
+.btn strong{font-size:18px}
+.btn-y{min-height:66px;padding:14px 20px}
+.btn-y::after{z-index:0;background:linear-gradient(90deg,transparent,rgba(255,255,255,.4),transparent)}
+.btn-y > *{position:relative;z-index:1}
+.btn-y .chev{margin-left:auto;width:22px;height:22px}
+.btn-o{min-height:56px;padding:10px 18px 10px 14px;border:1.5px solid rgba(244,240,228,.22);transition:transform 300ms var(--ease),border-color 300ms var(--ease)}
+.btn-o:hover{border-color:var(--y)}
+.btn-o img{width:32px;height:32px;margin:-4px 0 0}
+.btn-o strong{font-size:16px}
+.btn-o small{font-size:13px}
+.btn.rv{transition:opacity 600ms var(--ease),transform 300ms var(--ease),border-color 300ms var(--ease),filter 300ms var(--ease)}
+.cta-sm{display:none}
+/* amarelo só para ação e destaque */
+.card:not(.main) h3{color:var(--cream)}
+.mlink{display:inline-flex;align-items:center;gap:6px;min-height:44px;padding:0 4px;margin:-12px -4px;color:var(--cream);font-size:14px;font-weight:700;white-space:nowrap}
+.mlink span{color:var(--y);transition:transform 300ms var(--ease)}
+.mlink:hover{color:var(--cream)}
+.mlink:hover span{transform:translateX(3px)}
+/* hero */
+.hero .lead{text-wrap:balance}
+.hero-facts b{color:var(--cream)}
+.hero-facts li::before{content:'';display:block;width:18px;height:3px;border-radius:2px;background:var(--y);margin-bottom:10px}
+@media (max-width:959px){
+  .hero-photo::after{background:linear-gradient(180deg,rgba(20,21,18,.45) 0%,rgba(20,21,18,.4) 14%,rgba(20,21,18,.58) 30%,rgba(20,21,18,.7) 50%,rgba(20,21,18,.94) 84%,var(--ink) 100%)}
+}
+@media (min-width:380px) and (max-width:959px) and (min-height:721px){
+  .h1{font-size:clamp(56px,18.5vw,104px)}
+  .pill{font-size:11px;letter-spacing:.1em;padding:6px 12px}
+}
+@media (max-width:959px) and (max-height:720px){.hero-logo{width:min(120px,36vw)}}
+@media (max-width:379px){
+  .hero .btn-y{padding:12px 14px;gap:12px;min-height:60px}
+  .hero .btn-y img{width:24px;height:24px}
+  .hero .btn-y strong{font-size:16px}
+  .hero .btn-y small{font-size:12.5px}
+  .cta-lg{display:none}.cta-sm{display:inline}
+}
+@media (min-width:960px){
+  .hero-txt{gap:0}
+  .hero-txt > picture{margin-bottom:20px}
+  .hero-txt .pill{margin-bottom:20px}
+  .hero-txt .h1{margin-bottom:22px}
+  .hero-txt .lead{margin-bottom:36px}
+  .hero-ctas{margin-top:0}
+}
+@media (min-width:960px) and (max-height:860px){
+  .hero-txt > picture,.hero-txt .pill{margin-bottom:14px}
+  .hero-txt .h1{margin-bottom:16px}
+  .hero-txt .lead{margin-bottom:26px}
+}
+/* repertório */
+.rep-head{display:block;margin-bottom:28px}
+.rep-head .h2{max-width:900px}
+.card{border-radius:var(--r)}
+@media (min-width:960px){
+  .kicker{font-size:22px}
+  .rep-head{margin-bottom:48px}
+  .cards{grid-template-columns:1.25fr 1fr 1fr 1fr;grid-template-rows:auto auto 1fr;row-gap:0;column-gap:16px}
+  .card{display:grid;grid-row:span 3;grid-template-rows:subgrid;row-gap:8px;align-content:start}
+  .card:nth-child(2){animation-delay:0s,0s}
+  .card:nth-child(3){animation-delay:0s,3s}
+  .card:nth-child(4){animation-delay:0s,6s}
+}
+/* eventos */
+.ev-txt{display:flex;flex-direction:column}
+.ev-txt .h2{margin-bottom:20px}
+.ev-txt .lead{margin-bottom:28px}
+.ev-list{border-top:1px solid var(--line)}
+.ev-list li{display:block;min-height:0;padding:0;margin:0;border-radius:0;font-size:18px}
+.ev-list li::before{content:none}
+.ev-list a{display:flex;align-items:center;gap:14px;min-height:58px;padding:14px 0;color:var(--cream);font-weight:500;transition:color 300ms var(--ease)}
+.ev-list a::before{content:'';width:8px;height:8px;border-radius:50%;background:var(--y);flex:none;box-shadow:0 0 0 4px rgba(255,198,0,.14)}
+.ev-list a .chev{margin-left:auto;width:18px;height:18px;color:var(--mute);transition:transform 300ms var(--ease),color 300ms var(--ease)}
+.ev-list a:hover,.ev-list a:focus-visible{color:var(--y)}
+.ev-list a:hover .chev,.ev-list a:focus-visible .chev{color:var(--y);transform:translateX(3px)}
+.ev-hint{margin-top:14px;font-size:14px;color:var(--mute)}
+.photos img{border-radius:var(--r)}
+.quote span{display:block}
+@media (max-width:959px){.ph-a img,.ph-b img{border-radius:var(--r)}}
+@media (min-width:960px){
+  .photos{position:relative;display:block;padding-bottom:64px}
+  .ph-a img{aspect-ratio:5/4;object-position:center 55%}
+  .ph-b{position:absolute;left:-40px;bottom:0;width:42%}
+  .ph-b img{aspect-ratio:1/1;outline:6px solid var(--ink2);box-shadow:0 18px 40px rgba(0,0,0,.5)}
+  .ev-grid .quote{text-align:left;margin-top:8px;padding-top:40px;border-top:1px solid var(--line);font-size:clamp(40px,3.8vw,56px)}
+}
+/* sobre */
+.about-txt{display:flex;flex-direction:column;gap:20px}
+.tl{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
+.tl > li{display:grid;grid-template-columns:64px 1fr;gap:10px;align-items:start;padding:18px 0;border-bottom:1px solid var(--line);border-top:0;font-size:16px}
+.tl > li:last-child{border-bottom:1px solid var(--line)}
+.tl b{font-family:var(--disp);font-weight:900;font-size:22px;line-height:1.15;color:var(--y)}
+.tl ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:12px}
+.tl ul li{display:flex;flex-direction:column;gap:2px;padding:0;border:0;font-size:inherit}
+.tl ul li:last-child{border:0}
+.tl small{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--mute)}
+.tl span{color:var(--soft);font-weight:400;line-height:1.45;text-wrap:balance}
+.tl strong{color:var(--cream);font-weight:700}
+@media (min-width:960px){
+  .about-grid{grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:64px;align-items:center}
+  .about-grid .h2{font-size:clamp(40px,4.6vw,60px);line-height:.95}
+  .about-txt{gap:24px}
+  .tl > li{grid-template-columns:110px 1fr;padding:22px 0;font-size:18px}
+  .tl b{font-size:30px;line-height:1}
+}
+/* ouça e assista */
+.sec-head{display:flex;flex-direction:column;gap:14px}
+.mcard{border-radius:16px}
+.embed{border-radius:var(--r)}
+.yt-btn{background:url(img/yt-capa.webp) center/cover}
+.yt-btn::before{background:linear-gradient(180deg,rgba(20,21,18,.15) 0%,rgba(20,21,18,.15) 45%,rgba(20,21,18,.85) 100%)}
+.yt-play::before{animation:none;transform:scale(1.18);opacity:.35}
+.yt-play::after{display:none}
+.yt-meta{position:absolute!important;left:16px;right:16px;bottom:14px;display:flex;flex-direction:column;align-items:flex-start;gap:2px;text-align:left}
+.yt-meta strong{font-family:var(--disp);font-size:22px;font-weight:800;text-transform:uppercase;line-height:1}
+.yt-meta small{font-size:13px;color:var(--mute)}
+@media (max-width:479px){.yt-btn{padding-bottom:56px}}
+.mhead{flex-wrap:nowrap}
+.sp iframe{filter:saturate(.45) brightness(.92)}
+.sp{background:#181816}
+.media-next{margin-top:28px;text-align:center;font-size:15px;color:var(--mute)}
+.media-next a{display:inline-flex;align-items:center;gap:6px;min-height:44px;font-weight:700;color:var(--y)}
+@media (max-width:959px){
+  .mcard{padding:0;background:none;border:0;gap:12px}
+  .embed{border:1px solid var(--line)}
+  .media{gap:32px}
+}
+@media (max-width:359px){.mhead h3{font-size:19px}.mhead h3 img{width:30px;height:30px}.mlink{font-size:13px}}
+@media (min-width:960px){.media-next{margin-top:40px}}
+/* fechamento (contato + CTA final) */
+.final{background:var(--ink);padding:80px 0}
+.fin{display:flex;flex-direction:column;align-items:center;text-align:center;max-width:680px}
+.fin .h2{font-size:clamp(46px,12.4vw,96px);line-height:.88;margin-bottom:20px}
+.fin .lead{max-width:520px;color:var(--soft);text-wrap:balance;margin-bottom:28px}
+.ct-check{display:flex;flex-direction:column;align-items:center;gap:10px;margin-bottom:24px}
+.ct-kicker{font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--mute)}
+.ct-list{display:flex;flex-wrap:wrap;justify-content:center;gap:8px 20px;list-style:none;margin:0;padding:0}
+.ct-list li{display:flex;align-items:center;gap:8px;font-size:16px;font-weight:700}
+.ct-list li::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--y)}
+.btn-wide{width:100%;max-width:460px}
+.pay-chip{display:inline-flex;align-items:center;gap:10px;margin-top:14px;padding:8px 16px;border-radius:999px;border:1px solid rgba(255,198,0,.45);background:rgba(255,198,0,.08);font-size:14px;font-weight:700;color:var(--cream);white-space:nowrap}
+.pay-chip svg{width:18px;height:18px;fill:none;stroke:var(--y);stroke-width:1.8;stroke-linecap:round}
+.btn-sm{margin-top:28px}
+@media (min-width:960px){.final{padding:120px 0 112px}.fin .h2{margin-bottom:24px}.fin .lead{margin-bottom:32px}}
+/* rodapé */
+.ft{gap:22px}
+.ft-brand{display:flex;flex-direction:column;align-items:center;gap:10px}
+.ft-tag{color:var(--cream);font-weight:500}
+.soc{margin:0;gap:16px}
+.soc .ic-yt{transform:scale(.9)}
+.soc .ic-sp{transform:scale(1.05)}
+.ft-links{gap:0;align-items:center}
+.ft-links a{display:inline-flex;align-items:center;min-height:44px;padding:0 8px;color:var(--cream)}
+.ft-links a:last-child{font-weight:700}
+.ft-links a:hover{color:var(--y)}
+.ft-links a+a::before{content:'·';margin-right:14px;color:var(--mute)}
+.ft-base{max-width:420px;width:100%;padding-top:14px;border-top:1px solid var(--line);font-size:12px;color:var(--mute)}
+.ft-credit{font-size:11px;color:#8F8B80;letter-spacing:.04em;margin:0}
+.bars{gap:4px;-webkit-mask-image:linear-gradient(90deg,transparent,#000 15%,#000 85%,transparent),linear-gradient(to top,#000 35%,transparent);-webkit-mask-composite:source-in;mask-image:linear-gradient(90deg,transparent,#000 15%,#000 85%,transparent),linear-gradient(to top,#000 35%,transparent);mask-composite:intersect}
+.bars i{border-radius:2px 2px 0 0}
+@media (max-width:359px){.ft-links{flex-direction:column}.ft-links a+a::before{content:none}}
+@media (min-width:960px){.ft{gap:26px}.ft-logo{width:180px}.bars{height:90px}footer{padding-bottom:110px}.soc img{width:50px;height:50px}.soc a{width:56px;height:56px}}
+/* botões flutuantes */
+@media (min-width:960px){.mus{left:20px;bottom:24px}}
+@media (min-width:960px){.hero-facts li:first-child{padding-left:max(0px,calc(170px - max(40px,(100vw - 1100px)/2)))}}
+@media (min-width:960px) and (max-width:1099px){.hero-facts b{font-size:18px}}
+.fab{width:56px;height:56px;bottom:calc(10px + env(safe-area-inset-bottom))}
+.fab img{width:54px;height:54px}
 @media (prefers-reduced-motion:reduce){*,*::after{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
 </style>
 </head>
@@ -326,9 +474,9 @@ html.playing .bars{opacity:.24}
         <h1 class="h1">A resenha<br><span class="y">tem nome.</span></h1>
         <p class="lead">O Pagode do Tinega leva pro seu evento samba, pagode e muita troca com a galera. Do clima leve da roda de samba romântica à energia do samba e axé.</p>
         <div class="hero-ctas">
-          <a class="btn btn-y" href="https://wa.me/5534996366724?text=Oi%2C%20Tinega!%20Quero%20um%20or%C3%A7amento%20para%20o%20meu%20evento." target="_blank" rel="noopener">
+          <a class="btn btn-y" href="https://wa.me/5534996366724?text=Oi%2C%20Tinega!%20Quero%20um%20or%C3%A7amento.%0AData%3A%20%0ACidade%3A%20%0ATipo%20de%20evento%3A%20" target="_blank" rel="noopener">
             <img src="img/whatsapp-ink.svg" alt="" width="28" height="28">
-            <span class="t"><strong>Quero o Tinega na minha festa</strong><small>Peça seu orçamento pelo WhatsApp</small></span>
+            <span class="t"><strong>Quero o Tinega na minha festa</strong><small><span class="cta-lg">Peça seu orçamento pelo WhatsApp</span><span class="cta-sm">Orçamento pelo WhatsApp</span></small></span>
           </a>
           <a class="hero-sec" href="#ouca"><span class="hero-sec-ic" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13l11-6.5z"/></svg></span>Ver e ouvir o show</a>
         </div>
@@ -356,8 +504,8 @@ html.playing .bars{opacity:.24}
   <section class="sec" aria-labelledby="rep">
     <div class="wrap">
       <div class="rep-head rv">
-        <h2 id="rep" class="h2 h2-long">Um show que agrada vários estilos, do samba ao pop rock, tudo em ritmo de pagode!</h2>
-        <p class="lead">Vários estilos em um só!!!</p>
+        <p class="kicker">Vários estilos em um só!</p>
+        <h2 id="rep" class="h2 h2-long">Do samba ao pop&nbsp;rock, <span class="y">tudo em ritmo de pagode.</span></h2>
       </div>
       <div class="cards">
         <div class="card main rv"><span>A base</span><h3>Samba &amp; pagode</h3><p>O coração do show. Refrão que a galera canta junto do começo ao fim.</p></div>
@@ -370,103 +518,98 @@ html.playing .bars{opacity:.24}
 
   <section class="sec alt" aria-labelledby="ev">
     <div class="wrap ev-grid">
-      <div class="stack rv" style="gap:32px">
-        <div class="stack" style="gap:14px">
-          <h2 id="ev" class="h2">Tem festa?<br><span class="y">Tem Tinega.</span></h2>
-          <p class="lead">Show pensado pro tamanho e pro estilo do seu evento.</p>
-        </div>
+      <div class="ev-txt rv">
+        <h2 id="ev" class="h2">Tem festa?<br><span class="y">Tem Tinega.</span></h2>
+        <p class="lead">Show pensado pro tamanho e pro estilo do seu evento.</p>
         <ul class="ev-list">
-          <li>Bares e casas de show</li>
-          <li>Aniversários</li>
-          <li>Festas particulares</li>
-          <li>Empresas e confraternizações</li>
+          <li><a href="https://wa.me/5534996366724?text=Oi%2C%20Tinega!%20Quero%20um%20or%C3%A7amento%20para%20um%20bar%20ou%20casa%20de%20show.%0AData%3A%20%0ACidade%3A%20" target="_blank" rel="noopener">Bares e casas de show<svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></a></li>
+          <li><a href="https://wa.me/5534996366724?text=Oi%2C%20Tinega!%20Quero%20um%20or%C3%A7amento%20para%20um%20anivers%C3%A1rio.%0AData%3A%20%0ACidade%3A%20" target="_blank" rel="noopener">Aniversários<svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></a></li>
+          <li><a href="https://wa.me/5534996366724?text=Oi%2C%20Tinega!%20Quero%20um%20or%C3%A7amento%20para%20uma%20festa%20particular.%0AData%3A%20%0ACidade%3A%20" target="_blank" rel="noopener">Festas particulares<svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></a></li>
+          <li><a href="https://wa.me/5534996366724?text=Oi%2C%20Tinega!%20Quero%20um%20or%C3%A7amento%20para%20um%20evento%20de%20empresa%20ou%20confraterniza%C3%A7%C3%A3o.%0AData%3A%20%0ACidade%3A%20" target="_blank" rel="noopener">Empresas e confraternizações<svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></a></li>
         </ul>
+        <p class="ev-hint">Toque no seu tipo de evento e peça seu orçamento.</p>
       </div>
       <div class="photos rv">
         <picture class="ph-a"><source srcset="img/04_roda.webp" type="image/webp"><img src="img/04_roda.jpg" alt="Clima da roda" width="853" height="853" loading="lazy" decoding="async"></picture>
         <picture class="ph-b"><source srcset="img/03_publico.webp" type="image/webp"><img src="img/03_publico.jpg" alt="Tinega e o público" width="853" height="853" loading="lazy" decoding="async"></picture>
       </div>
-      <p class="quote rv">Você cuida dos convidados. O Pagode do Tinega entrega diversão!</p>
+      <p class="quote rv"><span>Você cuida dos convidados.</span> <span class="y">O Pagode do Tinega entrega diversão!</span></p>
     </div>
   </section>
 
   <section class="sec" aria-labelledby="sobre">
     <div class="wrap about-grid">
-      <div class="stack rv">
-        <h2 id="sobre" class="h2">A roda de samba que vem crescendo com o tempo!</h2>
+      <div class="about-txt rv">
+        <h2 id="sobre" class="h2">A roda de samba que <span class="y">só cresce.</span></h2>
         <p class="body">O Pagode do Tinega começou em janeiro de 2025, em Uberlândia. No palco, a troca com o público faz parte do show: cantar junto, atender pedido e deixar a festa ganhar movimento.</p>
       </div>
       <ol class="tl rv">
-        <li><b>jan 25</b><span>O começo, em Uberlândia</span></li>
-        <li><b>fev 25</b><span>Marquinha de Fita</span></li>
-        <li><b>abr 25</b><span>Audiovisual ao vivo</span></li>
-        <li><b>2026</b><span>Tatu Bola, La República e Complexo Match Point</span></li>
-        <li><b>2026</b><span>Parcerias com Pagode do Berna e Segunda de Lei</span></li>
+        <li class="tl-y"><b>2025</b>
+          <ul>
+            <li><small>Jan</small><span>O começo, em Uberlândia</span></li>
+            <li><small>Fev</small><span><strong>Marquinha de Fita</strong></span></li>
+            <li><small>Abr</small><span>Audiovisual ao vivo</span></li>
+          </ul>
+        </li>
+        <li class="tl-y"><b>2026</b>
+          <ul>
+            <li><span><strong>Tatu Bola</strong>, <strong>La República</strong> e <strong>Complexo Match Point</strong></span></li>
+            <li><span>Parcerias com <strong>Pagode do Berna</strong> e <strong>Segunda de Lei</strong></span></li>
+          </ul>
+        </li>
       </ol>
     </div>
   </section>
 
-  <section class="sec alt" aria-labelledby="ouca">
+  <section class="sec alt" id="ouca" aria-labelledby="ouca-t">
     <div class="wrap">
-      <div class="stack rv" style="gap:14px">
-        <h2 id="ouca" class="h2">Ouça e <span class="y">assista</span><span class="eq eq-lg" aria-hidden="true"><i></i><i></i><i></i><i></i></span></h2>
+      <div class="sec-head rv">
+        <h2 id="ouca-t" class="h2">Ouça e <span class="y">assista</span><span class="eq eq-lg" aria-hidden="true"><i></i><i></i><i></i><i></i></span></h2>
         <p class="lead">Dá o play e sente o clima antes da festa.</p>
       </div>
       <div class="media">
         <div class="mcard rv">
           <div class="mhead">
-            <h3><img src="img/youtube-crown.webp" alt="" width="34" height="34">Vídeos recentes</h3>
-            <a class="mlink" href="https://www.youtube.com/@Tinegavini" target="_blank" rel="noopener">Ver canal →</a>
+            <h3><img src="img/youtube-crown.webp" alt="" width="34" height="34">Ao vivo</h3>
+            <a class="mlink" href="https://www.youtube.com/@Tinegavini" target="_blank" rel="noopener">Ver canal <span aria-hidden="true">→</span></a>
           </div>
           <div class="embed yt">
             <button class="yt-btn" type="button" data-yt="https://www.youtube.com/embed/1M-jFIUfnAM?autoplay=1&amp;rel=0" aria-label="Assistir Pagode do Tinega - Marquinha de Fita (ao vivo)">
               <span class="yt-play"><svg width="28" height="28" viewBox="0 0 24 24" fill="#141512" aria-hidden="true"><path d="M8 5.5v13l11-6.5z"></path></svg></span>
-              <strong>Assistir no YouTube</strong>
+              <span class="yt-meta"><strong>Marquinha de Fita</strong><small>Ao vivo · YouTube</small></span>
             </button>
           </div>
         </div>
         <div class="mcard rv">
           <div class="mhead">
             <h3><img src="img/spotify-crown.webp" alt="" width="34" height="34">Mais ouvidas</h3>
-            <a class="mlink" href="https://open.spotify.com/artist/1edh8CkeLzsK3lZ3djNWQ1" target="_blank" rel="noopener">Seguir →</a>
+            <a class="mlink" href="https://open.spotify.com/artist/1edh8CkeLzsK3lZ3djNWQ1" target="_blank" rel="noopener">Seguir <span aria-hidden="true">→</span></a>
           </div>
           <div class="embed sp"><div id="sp-embed"></div></div>
         </div>
       </div>
+      <p class="media-next rv">Curtiu o som? <a href="#contato">Leve o Tinega pra sua festa <span aria-hidden="true">→</span></a></p>
     </div>
   </section>
 
-  <section class="sec" id="contato" aria-labelledby="ct">
-    <div class="wrap ct-grid">
-      <div class="stack rv" style="gap:14px">
-        <h2 id="ct" class="h2">Garanta a sua data</h2>
-        <p class="lead">Manda a data, a cidade e o tipo de evento. A gente responde com a proposta pro seu show.</p>
-      </div>
-      <div class="ct-btns rv">
-        <a class="btn btn-y" href="https://wa.me/5534996366724?text=Oi%2C%20Tinega!%20Quero%20um%20or%C3%A7amento%20para%20o%20meu%20evento." target="_blank" rel="noopener">
-          <img src="img/whatsapp-ink.svg" alt="" width="28" height="28">
-          <span class="t"><strong>Pedir orçamento</strong><small>(34) 99636-6724 · WhatsApp</small></span>
-        </a>
-        <a class="btn btn-g" href="https://wa.me/5534996366724?text=Oi%2C%20Tinega!%20Tem%20data%20livre%20para%20o%20meu%20evento%3F" target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24" fill="none" stroke="#FFC600" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="3" y="4.5" width="18" height="16.5" rx="3"></rect><path d="M3 9.5h18M8 2.5v4M16 2.5v4"></path></svg>
-          <span class="t"><strong>Consultar datas livres</strong><small>Veja se o seu dia ainda está disponível</small></span>
-        </a>
-        <a class="btn btn-o" href="https://www.instagram.com/tinegavini/" target="_blank" rel="noopener">
-          <img src="img/instagram-crown.webp" alt="" width="40" height="40">
-          <span class="t"><strong>Siga no Instagram</strong><small>@tinegavini · vídeos, bastidores e agenda</small></span>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <section class="final alt" aria-labelledby="fim">
-    <div class="wrap stack">
-      <h2 id="fim" class="h2 rv">Bora levar esse show pra <span class="y">sua festa?!?!</span></h2>
+  <section class="final" id="contato" aria-labelledby="fim">
+    <div class="wrap fin">
+      <p class="kicker rv">Garanta a sua data</p>
+      <h2 id="fim" class="h2 rv">Bora levar esse show pra <span class="y">sua festa?</span></h2>
       <p class="lead rv">Pagode do bom, galera cantando junto e uma festa pra lembrar.</p>
-      <p class="card-note rv">Temos condições de pagamento com cartão de crédito!!!</p>
-      <a class="btn btn-y rv" href="https://wa.me/5534996366724?text=Oi%2C%20Tinega!%20Quero%20um%20or%C3%A7amento%20para%20o%20meu%20evento." target="_blank" rel="noopener">
+      <div class="ct-check rv">
+        <p class="ct-kicker">Pra agilizar, manda:</p>
+        <ul class="ct-list"><li>Data</li><li>Cidade</li><li>Tipo de festa</li></ul>
+      </div>
+      <a class="btn btn-y btn-wide rv" href="https://wa.me/5534996366724?text=Oi%2C%20Tinega!%20Quero%20um%20or%C3%A7amento.%0AData%3A%20%0ACidade%3A%20%0ATipo%20de%20evento%3A%20" target="_blank" rel="noopener">
         <img src="img/whatsapp-ink.svg" alt="" width="28" height="28">
-        <span class="t"><strong>Chamar no WhatsApp</strong><small>Orçamento sem compromisso</small></span>
+        <span class="t"><strong>Pedir orçamento</strong><small>Consulte sua data · sem compromisso</small></span>
+        <svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
+      </a>
+      <p class="pay-chip rv"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="5" width="19" height="14" rx="2.5"/><path d="M2.5 10h19M6 15h4"/></svg>Pagamento no cartão de crédito</p>
+      <a class="btn btn-o btn-sm rv" href="https://www.instagram.com/tinegavini/" target="_blank" rel="noopener">
+        <img src="img/instagram-crown.webp" alt="" width="32" height="32">
+        <span class="t"><strong>Siga no Instagram</strong><small>@tinegavini</small></span>
       </a>
     </div>
   </section>
@@ -475,27 +618,29 @@ html.playing .bars{opacity:.24}
 <footer>
   <div class="bars" aria-hidden="true"></div>
   <div class="wrap ft">
-    <picture><source srcset="img/logo.webp" type="image/webp"><img class="ft-logo" src="img/logo.png" alt="Pagode do Tinega" width="560" height="269" loading="lazy"></picture>
-    <div style="color:var(--cream);font-weight:500">Samba · Pagode · Uberlândia e região</div>
+    <div class="ft-brand">
+      <picture><source srcset="img/logo.webp" type="image/webp"><img class="ft-logo" src="img/logo.png" alt="Pagode do Tinega" width="560" height="269" loading="lazy"></picture>
+      <p class="ft-tag">Samba · Pagode · Uberlândia e região</p>
+    </div>
     <nav class="soc" aria-label="Redes sociais">
-      <a href="https://wa.me/5534996366724?text=Oi%2C%20Tinega!%20Quero%20um%20or%C3%A7amento%20para%20o%20meu%20evento." target="_blank" rel="noopener" aria-label="WhatsApp"><img src="img/whatsapp-crown.webp" alt="" width="46" height="46" loading="lazy"></a>
+      <a href="https://wa.me/5534996366724?text=Oi%2C%20Tinega!%20Quero%20um%20or%C3%A7amento.%0AData%3A%20%0ACidade%3A%20%0ATipo%20de%20evento%3A%20" target="_blank" rel="noopener" aria-label="WhatsApp"><img src="img/whatsapp-crown.webp" alt="" width="46" height="46" loading="lazy"></a>
       <a href="https://www.instagram.com/tinegavini/" target="_blank" rel="noopener" aria-label="Instagram"><img src="img/instagram-crown.webp" alt="" width="46" height="46" loading="lazy"></a>
-      <a href="https://www.youtube.com/@Tinegavini" target="_blank" rel="noopener" aria-label="YouTube"><img src="img/youtube-crown.webp" alt="" width="46" height="46" loading="lazy"></a>
-      <a href="https://open.spotify.com/artist/1edh8CkeLzsK3lZ3djNWQ1" target="_blank" rel="noopener" aria-label="Spotify"><img src="img/spotify-crown.webp" alt="" width="46" height="46" loading="lazy"></a>
+      <a href="https://www.youtube.com/@Tinegavini" target="_blank" rel="noopener" aria-label="YouTube"><img class="ic-yt" src="img/youtube-crown.webp" alt="" width="46" height="46" loading="lazy"></a>
+      <a href="https://open.spotify.com/artist/1edh8CkeLzsK3lZ3djNWQ1" target="_blank" rel="noopener" aria-label="Spotify"><img class="ic-sp" src="img/spotify-crown.webp" alt="" width="46" height="46" loading="lazy"></a>
     </nav>
-    <div class="ft-links"><a href="https://www.instagram.com/tinegavini/" target="_blank" rel="noopener">@tinegavini</a><span>·</span><a href="https://wa.me/5534996366724?text=Oi%2C%20Tinega!%20Quero%20um%20or%C3%A7amento%20para%20o%20meu%20evento." target="_blank" rel="noopener">WhatsApp (34) 99636-6724</a></div>
-    <div class="ft-credit">by Lex</div>
+    <div class="ft-links"><a href="https://www.instagram.com/tinegavini/" target="_blank" rel="noopener">@tinegavini</a><a href="https://wa.me/5534996366724?text=Oi%2C%20Tinega!%20Quero%20um%20or%C3%A7amento.%0AData%3A%20%0ACidade%3A%20%0ATipo%20de%20evento%3A%20" target="_blank" rel="noopener">WhatsApp (34) 99636-6724</a></div>
+    <p class="ft-base">© <span class="ft-year">2026</span> Pagode do Tinega <span class="ft-credit">· by Lex</span></p>
   </div>
 </footer>
 
 <button class="mus" type="button" aria-pressed="false" aria-busy="true" aria-label="Ouvir as músicas do Tinega"><span class="mus-ic" aria-hidden="true"><svg class="ic-play" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13l11-6.5z"/></svg><svg class="ic-pause" viewBox="0 0 24 24" fill="currentColor"><rect x="6.5" y="5" width="4" height="14" rx="1"/><rect x="13.5" y="5" width="4" height="14" rx="1"/></svg></span><picture><source srcset="img/logo.webp" type="image/webp"><img class="mus-logo" src="img/logo.png" alt="" width="560" height="269"></picture></button>
-<a class="fab" href="https://wa.me/5534996366724?text=Oi%2C%20Tinega!%20Quero%20um%20or%C3%A7amento%20para%20o%20meu%20evento." target="_blank" rel="noopener" aria-label="Pedir orçamento pelo WhatsApp"><img src="img/whatsapp-crown.webp" alt="" width="64" height="64"></a>
+<a class="fab" href="https://wa.me/5534996366724?text=Oi%2C%20Tinega!%20Quero%20um%20or%C3%A7amento.%0AData%3A%20%0ACidade%3A%20%0ATipo%20de%20evento%3A%20" target="_blank" rel="noopener" aria-label="Pedir orçamento pelo WhatsApp"><img src="img/whatsapp-crown.webp" alt="" width="64" height="64"></a>
 
 <script>
 (function(){var fab=document.querySelector('.fab');if(!fab||!('IntersectionObserver' in window))return;var vis=new Set();var o=new IntersectionObserver(function(es){es.forEach(function(e){e.isIntersecting?vis.add(e.target):vis.delete(e.target)});fab.classList.toggle('hide',vis.size>0)});document.querySelectorAll('main .btn-y').forEach(function(b){o.observe(b)});})();
 document.querySelectorAll('.yt-btn').forEach(function(b){b.addEventListener('click',function(){if(!/^https?:$/.test(location.protocol)){window.open('https://www.youtube.com/@Tinegavini','_blank','noopener');return;}var f=document.createElement('iframe');f.src=b.getAttribute('data-yt');f.title='Vídeos do Tinega no YouTube';f.allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; fullscreen';f.allowFullscreen=true;f.referrerPolicy='strict-origin-when-cross-origin';if(/^https?:/.test(location.protocol)){f.src+='&origin='+encodeURIComponent(location.origin);}b.replaceWith(f);});});
 (function(){if(!('IntersectionObserver' in window)||matchMedia('(prefers-reduced-motion: reduce)').matches)return;document.documentElement.classList.add('js');var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.remove('off');io.unobserve(e.target);}})},{threshold:.12,rootMargin:'0px 0px -40px 0px'});document.querySelectorAll('.rv').forEach(function(el){if(el.getBoundingClientRect().top<innerHeight)return;el.classList.add('off');io.observe(el);});})();
-(function(){document.querySelectorAll('.bars').forEach(function(c){var n=innerWidth<640?28:56,h='';for(var i=0;i<n;i++){var x=Math.sin(i/n*Math.PI);h+='<i style="--h:'+Math.round(25+x*55+Math.random()*20)+'%;--d:'+(0.7+Math.random()*0.9).toFixed(2)+'s;--dl:-'+(Math.random()*1.5).toFixed(2)+'s"></i>';}c.innerHTML=h;});})();
+(function(){document.querySelectorAll('.bars').forEach(function(c){var n=Math.max(24,Math.min(110,Math.round(innerWidth/15))),h='';for(var i=0;i<n;i++){var x=Math.sin(i/n*Math.PI);h+='<i style="--h:'+Math.round(25+x*55+Math.random()*20)+'%;--d:'+(0.7+Math.random()*0.9).toFixed(2)+'s;--dl:-'+(Math.random()*1.5).toFixed(2)+'s"></i>';}c.innerHTML=h;});})();
 (function(){
   /* O player do Spotify rola a própria lista até a faixa atual e arrasta a página junto.
      Ao trocar de faixa, desfaz rolagens que não vieram do usuário. */
@@ -505,7 +650,7 @@ document.querySelectorAll('.yt-btn').forEach(function(b){b.addEventListener('cli
   var URI='spotify:artist:1edh8CkeLzsK3lZ3djNWQ1',ARTIST='https://open.spotify.com/artist/1edh8CkeLzsK3lZ3djNWQ1';
   var host=document.getElementById('sp-embed'),btn=document.querySelector('.mus'),ctrl=null,ready=false;
   function plain(){if(!host||!host.parentNode)return;var f=document.createElement('iframe');f.src='https://open.spotify.com/embed/artist/1edh8CkeLzsK3lZ3djNWQ1?utm_source=generator&theme=0';f.loading='lazy';f.allow='autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture';f.title='Tinega no Spotify';host.replaceWith(f);host=null;}
-  function setState(playing){document.documentElement.classList.toggle('playing',playing);if(!btn)return;btn.setAttribute('aria-pressed',playing?'true':'false');btn.setAttribute('aria-label',playing?'Pausar a música':'Ouvir as músicas do Tinega');}
+  function setState(playing){document.documentElement.classList.toggle('playing',playing);if(!btn)return;btn.setAttribute('aria-pressed',playing?'true':'false');}
   /* Estado do botão: o toque é guardado até o player estar pronto e repetições durante o carregamento são ignoradas */
   var embedReady=false,pending=false,playing=false,started=false,pendTimer=0,failed=false;
   function setPending(on){pending=on;if(btn)btn.classList.toggle('loading',on);clearTimeout(pendTimer);if(on)pendTimer=setTimeout(giveUp,9000);}
@@ -536,6 +681,7 @@ document.querySelectorAll('.yt-btn').forEach(function(b){b.addEventListener('cli
   document.body.appendChild(s);
   setTimeout(function(){if(!ready){failed=true;if(host)plain();if(btn)btn.removeAttribute('aria-busy');}},10000);
 })();
+document.querySelectorAll('.ft-year').forEach(function(e){e.textContent=new Date().getFullYear();});
 (function(){
   /* vídeo de fundo do hero: versão por tamanho de tela, só quando o movimento é permitido e sem modo economia de dados */
   var v=document.querySelector('.hero-video');if(!v)return;
