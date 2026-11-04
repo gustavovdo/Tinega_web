@@ -200,7 +200,14 @@ html.playing .bars{opacity:.24}
 .mus{position:fixed;left:16px;bottom:calc(20px + env(safe-area-inset-bottom));z-index:50;display:flex;align-items:center;gap:10px;height:48px;padding:0 18px 0 14px;border-radius:999px;border:1.5px solid rgba(255,198,0,.55);background:rgba(20,21,18,.82);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);color:var(--cream);font:700 14px/1 'DM Sans',system-ui,sans-serif;cursor:pointer;box-shadow:0 8px 24px rgba(0,0,0,.45);transition:transform 300ms var(--ease),opacity 300ms var(--ease),border-color 300ms var(--ease)}
 .mus:hover{border-color:var(--y);transform:scale(1.04)}
 .mus:focus-visible{outline:2px solid var(--y);outline-offset:3px}
-.mus .eq{color:var(--y);height:14px}
+.mus{padding:0 14px 0 7px}
+.mus-ic{width:34px;height:34px;border-radius:50%;background:var(--y);color:var(--ink);display:flex;align-items:center;justify-content:center;flex:none}
+.mus-ic svg{width:16px;height:16px}
+.mus .ic-pause,.mus[aria-pressed="true"] .ic-play{display:none}
+.mus[aria-pressed="true"] .ic-pause{display:block}
+.mus-logo{width:auto;height:30px;transform-origin:50% 70%}
+.mus[aria-pressed="true"] .mus-logo{animation:tn-crown 1s ease-in-out infinite}
+@keyframes tn-crown{0%,100%{transform:rotate(-3deg)}50%{transform:rotate(3deg) translateY(-1px)}}
 .mus.hide{opacity:0;transform:scale(.8);pointer-events:none}
 .mus[aria-busy="true"]{opacity:.6;cursor:progress}
 @media (min-width:960px){.mus{left:24px;bottom:24px}}
@@ -466,7 +473,7 @@ html.playing .bars{opacity:.24}
   </div>
 </footer>
 
-<button class="mus" type="button" aria-pressed="false" aria-busy="true" aria-label="Ouvir as músicas do Tinega"><span class="eq" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span class="mus-t">Ouvir o Tinega</span></button>
+<button class="mus" type="button" aria-pressed="false" aria-busy="true" aria-label="Ouvir as músicas do Tinega"><span class="mus-ic" aria-hidden="true"><svg class="ic-play" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13l11-6.5z"/></svg><svg class="ic-pause" viewBox="0 0 24 24" fill="currentColor"><rect x="6.5" y="5" width="4" height="14" rx="1"/><rect x="13.5" y="5" width="4" height="14" rx="1"/></svg></span><picture><source srcset="img/logo.webp" type="image/webp"><img class="mus-logo" src="img/logo.png" alt="" width="560" height="269"></picture></button>
 <a class="fab" href="https://wa.me/5534996366724?text=Oi%2C%20Tinega!%20Quero%20um%20or%C3%A7amento%20para%20o%20meu%20evento." target="_blank" rel="noopener" aria-label="Pedir orçamento pelo WhatsApp"><img src="img/whatsapp-ink.svg" alt="" width="28" height="28"></a>
 
 <script>
@@ -481,9 +488,9 @@ document.querySelectorAll('.yt-btn').forEach(function(b){b.addEventListener('cli
   ['wheel','touchstart','touchmove','keydown','pointerdown'].forEach(function(t){addEventListener(t,function(){lastInput=Date.now();},{passive:true,capture:true});});
   addEventListener('scroll',function(){var now=Date.now();if(now<guardUntil&&now-lastInput>800&&Math.abs(scrollY-lastY)>2){window.scrollTo({top:lastY,behavior:'instant'});return;}lastY=scrollY;},{passive:true});
   var URI='spotify:artist:1edh8CkeLzsK3lZ3djNWQ1',ARTIST='https://open.spotify.com/artist/1edh8CkeLzsK3lZ3djNWQ1';
-  var host=document.getElementById('sp-embed'),btn=document.querySelector('.mus'),label=btn&&btn.querySelector('.mus-t'),ctrl=null,ready=false;
+  var host=document.getElementById('sp-embed'),btn=document.querySelector('.mus'),ctrl=null,ready=false;
   function plain(){if(!host||!host.parentNode)return;var f=document.createElement('iframe');f.src='https://open.spotify.com/embed/artist/1edh8CkeLzsK3lZ3djNWQ1?utm_source=generator&theme=0';f.loading='lazy';f.allow='autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture';f.title='Tinega no Spotify';host.replaceWith(f);host=null;}
-  function setState(playing){document.documentElement.classList.toggle('playing',playing);if(!btn)return;btn.setAttribute('aria-pressed',playing?'true':'false');btn.setAttribute('aria-label',playing?'Pausar a música':'Ouvir as músicas do Tinega');label.textContent=playing?'Pausar':'Ouvir o Tinega';}
+  function setState(playing){document.documentElement.classList.toggle('playing',playing);if(!btn)return;btn.setAttribute('aria-pressed',playing?'true':'false');btn.setAttribute('aria-label',playing?'Pausar a música':'Ouvir as músicas do Tinega');}
   if(btn)btn.addEventListener('click',function(){if(ready&&ctrl){ctrl.togglePlay();}else{window.open(ARTIST,'_blank','noopener');}});
   window.onSpotifyIframeApiReady=function(API){
     API.createController(host,{uri:URI,width:'100%',height:352},function(c){
