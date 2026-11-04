@@ -450,7 +450,10 @@ html.playing .bars{opacity:.24}
 .ft-links a:hover{color:var(--y)}
 .ft-links a+a::before{content:'·';margin-right:14px;color:var(--mute)}
 .ft-base{max-width:420px;width:100%;padding-top:14px;border-top:1px solid var(--line);font-size:12px;color:var(--mute)}
-.ft-credit{font-size:11px;color:#8F8B80;letter-spacing:.04em;margin:0}
+.ft-base{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:0 8px}
+.ft-credit{display:inline-flex;align-items:center;min-height:44px;padding:0 4px;opacity:.6;transition:opacity 300ms var(--ease)}
+.ft-credit:hover,.ft-credit:focus-visible{opacity:1}
+.ft-credit img{width:82px;height:11px}
 .bars{gap:4px;-webkit-mask-image:linear-gradient(90deg,transparent,#000 15%,#000 85%,transparent),linear-gradient(to top,#000 35%,transparent);-webkit-mask-composite:source-in;mask-image:linear-gradient(90deg,transparent,#000 15%,#000 85%,transparent),linear-gradient(to top,#000 35%,transparent);mask-composite:intersect}
 .bars i{border-radius:2px 2px 0 0}
 @media (max-width:359px){.ft-links{flex-direction:column}.ft-links a+a::before{content:none}}
@@ -629,7 +632,7 @@ html.playing .bars{opacity:.24}
       <a href="https://open.spotify.com/artist/1edh8CkeLzsK3lZ3djNWQ1" target="_blank" rel="noopener" aria-label="Spotify"><img class="ic-sp" src="img/spotify-crown.webp" alt="" width="46" height="46" loading="lazy"></a>
     </nav>
     <div class="ft-links"><a href="https://www.instagram.com/tinegavini/" target="_blank" rel="noopener">@tinegavini</a><a href="https://wa.me/5534996366724?text=Oi%2C%20Tinega!%20Quero%20um%20or%C3%A7amento.%0AData%3A%20%0ACidade%3A%20%0ATipo%20de%20evento%3A%20" target="_blank" rel="noopener">WhatsApp (34) 99636-6724</a></div>
-    <p class="ft-base">© <span class="ft-year">2026</span> Pagode do Tinega <span class="ft-credit">· by Lex</span></p>
+    <p class="ft-base"><span>© <span class="ft-year">2026</span> Pagode do Tinega</span> <span class="ft-dot" aria-hidden="true">·</span> <a class="ft-credit" href="https://wa.me/553496605159?text=Oi%2C%20Vulpwise!%20Vi%20o%20site%20do%20Pagode%20do%20Tinega%20e%20quero%20saber%20mais." target="_blank" rel="noopener" aria-label="Site feito pela Vulpwise – falar no WhatsApp"><img src="img/vulpwise.webp" alt="Vulpwise" width="82" height="11" loading="lazy"></a></p>
   </div>
 </footer>
 
