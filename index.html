@@ -468,6 +468,39 @@ html.playing .bars{opacity:.24}
 .fab{width:56px;height:56px;bottom:calc(10px + env(safe-area-inset-bottom))}
 .fab img{width:54px;height:54px}
 @media (prefers-reduced-motion:reduce){*,*::after{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
+/* hero enxuto (v2): logo no topo, mensagem embaixo, cantor visível no meio */
+.hero-more{display:none}
+.hero .btn-y small{display:none}
+.hl-m{display:none}
+@media (max-width:959px){.hl-d{display:none}.hl-m{display:inline}}
+@media (max-width:959px){
+  .hero{justify-content:stretch;padding:24px 0 92px}
+  .hero-grid{flex:1;display:flex;flex-direction:column}
+  .hero-txt{flex:1;gap:16px}
+  .hero-txt .pill{margin-top:auto}
+  .hero-logo{width:min(170px,44vw)}
+  .hero-photo::after{background:linear-gradient(180deg,rgba(20,21,18,.6) 0%,rgba(20,21,18,.15) 20%,rgba(20,21,18,.08) 38%,rgba(20,21,18,.55) 56%,rgba(20,21,18,.9) 76%,var(--ink) 100%)}
+  .hero .h1{font-size:clamp(46px,14.5vw,80px)}
+  .hero .lead{font-size:16px;max-width:300px}
+  .hero-ctas{gap:0}
+  .hero .btn-y{width:auto;max-width:none;min-height:52px;padding:10px 22px 10px 18px;gap:10px}
+  .hero .btn-y img{width:22px;height:22px}
+  .hero .btn-y strong{font-size:16px}
+  .hero-sec{display:none}
+  .hero-more{display:flex;flex-direction:column;align-items:center;gap:2px;margin-top:6px;min-height:44px;padding:4px 16px;color:var(--soft);font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase}
+  .hero-more svg{color:var(--y)}
+  .hero-more .c1{animation:tn-chev 1.8s ease-in-out infinite}
+  .hero-more .c2{animation:tn-chev 1.8s ease-in-out .2s infinite}
+}
+@media (max-width:959px) and (max-height:720px){
+  .hero{padding:16px 0 80px}.hero-txt{gap:12px}.hero-logo{width:min(120px,34vw)}
+  .hero .h1{font-size:clamp(42px,12.5vw,64px)}.hero .lead{font-size:15px}
+  .hero-more{margin-top:0}.hero-more svg{height:24px}
+}
+@keyframes tn-chev{0%,100%{opacity:.25;transform:translateY(-3px)}50%{opacity:1;transform:translateY(2px)}}
+@media (min-width:960px){
+  .hero .btn-y{min-height:58px;padding:12px 24px 12px 18px}
+}
 </style>
 </head>
 <body>
@@ -478,14 +511,15 @@ html.playing .bars{opacity:.24}
         <picture><source srcset="img/logo.webp" type="image/webp"><img class="hero-logo" src="img/logo.png" alt="Pagode do Tinega" width="560" height="269" fetchpriority="high"></picture>
         <div class="pill"><span class="eq" aria-hidden="true"><i></i><i></i><i></i><i></i></span>Samba • Pagode • Uberlândia/MG</div>
         <h1 class="h1">A resenha<br><span class="y">tem nome.</span></h1>
-        <p class="lead">O Pagode do Tinega leva pro seu evento samba, pagode e muita troca com a galera. Do clima leve da roda de samba romântica à energia do samba e axé.</p>
+        <p class="lead">Samba e pagode ao vivo pra sua festa, do romântico ao axé.</p>
         <div class="hero-ctas">
           <a class="btn btn-y" href="https://wa.me/5534996366724?text=Oi%2C%20Tinega!%20Quero%20um%20or%C3%A7amento.%0AData%3A%20%0ACidade%3A%20%0ATipo%20de%20evento%3A%20" target="_blank" rel="noopener">
             <img src="img/whatsapp-ink.svg" alt="" width="28" height="28">
-            <span class="t"><strong>Quero o Tinega na minha festa</strong><small><span class="cta-lg">Peça seu orçamento pelo WhatsApp</span><span class="cta-sm">Orçamento pelo WhatsApp</span></small></span>
+            <span class="t"><strong><span class="hl-d">Quero o Tinega na minha festa</span><span class="hl-m">Pedir orçamento</span></strong><small><span class="cta-lg">Peça seu orçamento pelo WhatsApp</span><span class="cta-sm">Orçamento pelo WhatsApp</span></small></span>
           </a>
           <a class="hero-sec" href="#ouca"><span class="hero-sec-ic" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13l11-6.5z"/></svg></span>Ver e ouvir o show</a>
         </div>
+        <a class="hero-more" href="#estilos" aria-label="Ver mais sobre o Tinega"><span>Veja mais</span><svg width="22" height="30" viewBox="0 0 22 30" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path class="c1" d="M4 6l7 7 7-7"/><path class="c2" d="M4 16l7 7 7-7"/></svg></a>
       </div>
       <div class="hero-photo">
         <picture>
@@ -507,7 +541,7 @@ html.playing .bars{opacity:.24}
     </div>
   </section>
 
-  <section class="sec" aria-labelledby="rep">
+  <section class="sec" id="estilos" aria-labelledby="rep">
     <div class="wrap">
       <div class="rep-head rv">
         <p class="kicker">Vários estilos em um só!</p>
