@@ -468,6 +468,7 @@ html.playing .bars{opacity:.24}
 .fab{width:56px;height:56px;bottom:calc(10px + env(safe-area-inset-bottom))}
 .fab img{width:54px;height:54px}
 @media (prefers-reduced-motion:reduce){*,*::after{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
+@media (min-width:960px){.hero-txt .pill{font-size:10.5px;padding:6px 13px;gap:8px;border-color:rgba(255,198,0,.38)}.hero-txt > picture{margin-bottom:14px}.hero-txt .pill{margin-bottom:24px}}
 /* hero enxuto (v2): logo no topo, mensagem embaixo, cantor visível no meio */
 .hero-more{display:none}
 .hero .btn-y small{display:none}
@@ -477,7 +478,9 @@ html.playing .bars{opacity:.24}
   .hero{justify-content:stretch;padding:24px 0 92px}
   .hero-grid{flex:1;display:flex;flex-direction:column}
   .hero-txt{flex:1;gap:16px}
-  .hero-txt .pill{margin-top:auto}
+  .hero-txt .pill{margin-top:-6px;font-size:10px;letter-spacing:.18em;padding:5px 12px;gap:8px;border-color:rgba(255,198,0,.35);background:rgba(20,21,18,.45)}
+  .hero-txt .pill .eq{transform:scale(.8)}
+  .hero-txt .h1{margin-top:auto}
   .hero-logo{width:min(170px,44vw)}
   .hero-photo::after{background:linear-gradient(180deg,rgba(20,21,18,.6) 0%,rgba(20,21,18,.15) 20%,rgba(20,21,18,.08) 38%,rgba(20,21,18,.55) 56%,rgba(20,21,18,.9) 76%,var(--ink) 100%)}
   .hero .h1{font-size:clamp(46px,14.5vw,80px)}
